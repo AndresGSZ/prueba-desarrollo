@@ -1,17 +1,25 @@
 $(function () {
     $('body').on('click', '.btn-submit', function (e) {
+    
+
         e.preventDefault();
-        const $form = $(this).closest('.filter-form');
+   
+   //     const $form = $(this).closest('.filter-form');
+        const $form = $(this).closest('#form');
+        console.log($form);
         const target = $form.data('target') || '.filter-results';
         const $resContainer = $(target).empty().hide();
+      
+        
 
-        asyncLoad($form.attr('action'), $form.serialize(), $resContainer);
+       // asyncLoad($form.attr('action'), $form.serialize(), $resContainer);
+       asyncLoad('orders_async.php', $form.serialize(), $resContainer);
     });
 
     $('body').on('click', '.btn-clear', function (e) {
         e.preventDefault();
 
-        const $form = $(this).closest('.filter-form');
+        const $form = $(this).closest('#form');
 
         $form.find('input:text, select').each(function () {
             $(this).val('');
@@ -36,9 +44,12 @@ $(function () {
     });
 
     $('body').on('click', '.btn-form-async', function (e) {
+        
+
         e.preventDefault();
         const $this = $(this);
-        const $form = $this.closest('form');
+        const $form = $this.closest('#form2');
+        console.log($form);
 
         $.ajax({
             type: 'POST',
@@ -55,6 +66,8 @@ $(function () {
 });
 
 const asyncLoad = (action, data, $resContainer) => {
+
+   
     $.ajax({
         type: 'POST',
         url: action,
