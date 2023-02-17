@@ -1,10 +1,10 @@
 $(function () {
     $('body').on('click', '.btn-submit', function (e) {
         e.preventDefault();
-        const $form = $(this).closest('.filter-form');
+        const $form = $(this).parents('form');
         const target = $form.data('target') || '.filter-results';
         const $resContainer = $(target).empty().hide();
-
+        
         asyncLoad($form.attr('action'), $form.serialize(), $resContainer);
     });
 

@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ERROR | E_PARSE | E_WARNING);
+error_reporting(0);
 ini_set("session.cookie_lifetime", "12600");
 ini_set("session.gc_maxlifetime", "12600");
 

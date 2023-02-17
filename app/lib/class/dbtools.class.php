@@ -24,7 +24,7 @@ class DBTools
         if ($this->_conn === null) {
             $this->_conn = new mysqli();
             $this->_conn->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
-            $this->_conn->real_connect('127.0.0.1', 'root', '', 'phptest');
+            $this->_conn->real_connect('127.0.0.1', 'root', '', 'test', 3306);
 
             if (mysqli_connect_errno()) {
                 throw new Exception('Error connecting to database: ' . mysqli_connect_error());
